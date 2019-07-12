@@ -25,7 +25,9 @@ SECRET_KEY = 'prwj%23phut(^3ihqf&etc&o2rxjfl(7t!uf8o1a71=qrbv#fz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'peaceful-taiga-73251.herokuapp.com'
+]
 
 
 # Application definition
@@ -75,24 +77,24 @@ WSGI_APPLICATION = 'djproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'savings_db',
-        'USER': 'postgres',
-        'PASSWORD': 'Arunpn@00',
-        'HOST': 'localhost',
-        'PORT': '9996'
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'savings_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Arunpn@00',
+#         'HOST': 'localhost',
+#         'PORT': '9996'
+
+#     }
+# }
 
 
 # DATABASES = {
@@ -107,6 +109,10 @@ DATABASES = {
 #     }
 
 # }
+import dj_database_url                                           
+db_from_env = dj_database_url.config()                              ### for cloud
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] = 500
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
