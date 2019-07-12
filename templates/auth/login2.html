@@ -1,0 +1,47 @@
+
+{% extends 'base/layout.html' %}
+{% load static %}
+{% block userdefined %}   
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="/home/">Back <span class="sr-only">(current)</span></a>
+            </li>
+            
+               
+              </div>
+            </div>
+          </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <!-- <img src="/static/logo.png" alt="image not found" width="200" height="200" class="ml-5"> -->
+                <p class="h2 text-uppercase mb- text-center text-info">STATS</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <p>Already paid amount : {{value1}} </p>
+
+                    <p>Remaining days : {{value2}} </p>
+
+                    <div class="form-group">
+                      <label for="username">Username:</label>
+                      <input id="username" type="text" class="form-control" name="username" value="{{name}}" readonly required>
+                    </div>
+
+                    <label for="amount_to_be_paid">Amount to be paid:</label>
+                    <input id="amount_to_be_paid" type="number" min="0" pattern="[0-9]{,6}" class="form-control" name="amount_to_be_paid" value="{{value3}}" required>
+                            
+                    
+                    <br><br>
+                    <input type="submit" name="confirm" class="btn btn-info btn-block" value="Confirm">
+                    
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+  {% endblock %}

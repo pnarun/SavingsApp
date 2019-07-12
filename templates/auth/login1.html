@@ -1,0 +1,60 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+{% block userdefined %}
+<style>
+    .container{
+        padding-top: 70px;
+    }
+    
+    </style>
+  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/home/">Back <span class="sr-only">(current)</span></a>
+        </li>
+        
+           
+          </div>
+        </div>
+      </nav>    
+      {% if msg %}
+         
+      <div class="alert alert-primary" role="alert">
+          <center><b><i>{{msg}}</i></b></center>
+      </div>
+      {% endif %}
+     
+            <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                            <p class="h2 text-uppercase mb- text-center text-info">DETAILS</p>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input id="username" type="text" class="form-control" name="username" value="{{name}}" readonly required>
+                            </div>
+                            <div class="form-group">
+                                <label for="deadline">Deadline:</label>
+                                <input id="deadline" type="date" class="form-control" name="deadline" placeholder="dd-mm-yyyy" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="money_to_be_saved">Money_to_be_saved:</label>
+                                <input id="money_to_be_saved" type="text" class="form-control" name="money_to_be_saved" required>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <input  type="submit" class="btn btn-info btn-block" name="proceed" value="Proceed">
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        
+{% endblock %}

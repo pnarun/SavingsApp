@@ -1,0 +1,101 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+{% block userdefined %}
+<style>
+.container{
+    padding-top: 50px;
+}
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="/home/">Back <span class="sr-only">(current)</span></a>
+    </li>
+    
+       
+      </div>
+    </div>
+  </nav>
+  {% if msg %}
+         
+  <div class="alert alert-primary" role="alert">
+      <center><b><i>{{msg}}</i></b></center>
+  </div>
+  {% endif %}
+<center>
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <p class="h2 text-uppercase mb- text-center text-info">Payment Portal</p>
+            <form method="POST" >
+                {% csrf_token %}
+                    
+                <div class="form-group">
+                    <p align="left">Card Name : </p>
+                    <!-- <label align="left" for="cardnumber">Card Name : </label> -->
+                    <input id="cardnumber" type="text" class="form-control" name="cardnumber" placeholder="16-digit number" pattern="[0-9]{16}" required>
+                </div>
+                <div class="form-group">
+                    <p align="left">Name on Card:</p>
+                    <!-- <label for="nameoncard">Name on Card:</label> -->
+                    <input id="nameoncard" type="text" name="nameoncard" class="form-control" placeholder="Name on Card" required>
+                </div>
+                <p align="left">Expiry Date:</p>
+                <div class="row">
+                <div class="form-group name1 col-md-4">
+                <!-- <div class="form-group"> -->
+                    <label  for="expirymonth">Month:</label><br>
+                    <select  name="expirymonth" id="expirymonth" class="btn btn-primary">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>                          
+                </div>
+                   
+                <div class="form-group name2 col-md-4">
+                <!-- <div class="form-group"> -->
+                    <label for="expiryyear">Year:</label><br>
+                    <select name="expiryyear" id="expiryyear" class="btn btn-primary">
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                    </select>  
+                </div>
+                        
+                </div> 
+                <div class="form-group">
+                    <p align="left">CVV : </p>
+                    <!-- <label for="cvv">CVV : </label> -->
+                    <input id="cvv" type="password" name="cvv" class="form-control" placeholder="cvv" pattern="[0-9]{3}" required>
+                </div>
+                <input type="submit" name="pay" class="btn btn-info btn-block" value="Confirm Payment">
+                    
+            </form>
+        </div>
+    <div class="col"></div>
+    </div>
+</div>
+</center>
+
+{% endblock %}
